@@ -1,0 +1,55 @@
+Instalar o GIT (https://git-scm.com/)
+Istalar o Node "LTS" (https://nodejs.org/en)
+
+// Atualizar o Nodejs
+npm i -g npm@9.6.2
+
+// Criar Projeto
+npx create-next-app@latest introducao --use-npm --example https://github.com/vercel/next-learn/tree/master/basics/learn-starter
+npx create-next-app@latest (introducao) Qualquer nome
+
+// Instalar Booststrap
+npm i react-bootstrap bootstrap
+
+// CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Icons
+npm i react-icons
+
+// Instalar Hooks
+npm i react-hook-form
+
+// Instalar Axios
+npm i axios
+
+// Instalar Firebase
+npm i firebase
+
+// Instalar Uuid
+npm i uuid
+
+// npm i --Istala as dependencias do projeto
+
+// Executar o projeto (startar o servidor)
+npm run dev
+
+// Comando para crair componentes
+race
+
+// Loop array javascript
+
+ {nomedavar.map(item --podeserqualquernome-- => (<p>{item}</p>))}]
+
+
+// getServerSideProps
+export async function getServerSideProps(context) {
+
+  const id = context.params.id --SE TIVER ID --
+
+  const resultado = await apiDeputados.get('/deputados')
+  const deputados = resultado.data
+   return {
+    props: {deputados},
+  }
+}
