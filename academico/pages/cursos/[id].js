@@ -1,7 +1,7 @@
 import Pagina from '@/components/Pagina'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import {useForm} from 'react-hook-form'
 import {AiOutlineCheck} from 'react-icons/ai'
@@ -9,8 +9,21 @@ import {IoMdArrowRoundBack} from 'react-icons/io'
 
 const form = () => {
   
-  const { push } = useRouter()
-  const {register, handleSubmit} = useForm()
+  const { push, query } = useRouter()
+  const {register, handleSubmit, setValue} = useForm()
+
+  useEffect(() => {
+  
+  if (query.id) {
+    const cursos = JSON.parse(window.localStorage.getItem('cursos'))
+    const curso =  cursos[query.id]
+    
+    setValue('nome', curso.nome )
+    setValue('duracao', curso.duracao)
+    setValue('modalidade', curso.modalidade)
+  }
+
+  }, [query.id])
 
   function salvar (dados) {
     const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
