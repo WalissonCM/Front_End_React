@@ -18,16 +18,19 @@ const form = () => {
     const cursos = JSON.parse(window.localStorage.getItem('cursos'))
     const curso =  cursos[query.id]
     
-    setValue('nome', curso.nome )
-    setValue('duracao', curso.duracao)
-    setValue('modalidade', curso.modalidade)
+    for(let atributo in curso){
+      setValue(atributo, curso[atributo])
+    }
+    //setValue('nome', curso.nome)
+    //setValue('duracao', curso.duracao)
+    //setValue('modalidade', curso.modalidade)
   }
 
   }, [query.id])
 
   function salvar (dados) {
     const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
-    cursos.push(dados)
+    cursos.splice(query.id, 1, dados)
     window.localStorage.setItem('cursos', JSON.stringify(cursos))
     push('/cursos')
   }
