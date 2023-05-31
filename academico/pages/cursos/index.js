@@ -36,16 +36,15 @@ const index = () => {
 
       <Table striped bordered hover>
             
-            <thead>
-              
+            <thead>   
             <tr>
               <th></th>
               <th>Nome</th>
               <th>Duração</th>
               <th>Modalidade</th>
-            </tr>
-            
+            </tr>     
             </thead>
+            
             <tbody>
              {cursos.map( (item, i) => (
               <tr key={i}>
@@ -61,6 +60,7 @@ const index = () => {
                 </tr>
              ))}     
             </tbody>
+
       </Table>
   
     </Pagina>    

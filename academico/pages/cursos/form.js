@@ -23,6 +23,7 @@ const form = () => {
     <Pagina titulo="Cursos">
 
       <Form>
+         
          <Form.Group className="mb-3" controlId="nome">
            <Form.Label>Nome: </Form.Label>
            <Form.Control type="text" {...register('nome')}/>

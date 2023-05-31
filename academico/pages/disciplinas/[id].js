@@ -21,9 +21,6 @@ const form = () => {
     for(let atributo in curso){
       setValue(atributo, curso[atributo])
     }
-    //setValue('nome', curso.nome)
-    //setValue('duracao', curso.duracao)
-    //setValue('modalidade', curso.modalidade)
   }
 
   }, [query.id])
@@ -39,7 +36,6 @@ const form = () => {
     <Pagina titulo="Cursos">
 
       <Form>
-         
          <Form.Group className="mb-3" controlId="nome">
            <Form.Label>Nome: </Form.Label>
            <Form.Control type="text" {...register('nome')}/>
