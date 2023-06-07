@@ -28,7 +28,6 @@ const index = () => {
 }
 
 
- 
   return (
     <Pagina titulo="Disciplinas">
 
