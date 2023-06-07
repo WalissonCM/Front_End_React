@@ -16,23 +16,23 @@ const form = () => {
   useEffect(() => {
   
   if (query.id) {
-    axios.get('/api/professores/' + query.id).then(resultado=>{
-      const professor = resultado.data
+    axios.get('/api/alunos/' + query.id).then(resultado=>{
+      const aluno = resultado.data
     
-    for(let atributo in professor){
-      setValue(atributo, professor[atributo])
+    for(let atributo in aluno){
+      setValue(atributo, aluno[atributo])
     }
   })
 }
   }, [query.id])
 
   function salvar (dados) {
-    axios.put('/api/professores/' + dados.id, dados)
-    push('/professores')
+    axios.put('/api/alunos/' + dados.id, dados)
+    push('/alunos')
   }
   
   return (
-    <Pagina titulo="Professores">
+    <Pagina titulo="Alunos">
 
       <Form>
          
@@ -49,11 +49,6 @@ const form = () => {
           <Form.Group className="mb-3" controlId="matricula">
            <Form.Label>Matricula: </Form.Label>
            <Form.Control type="text" {...register('matricula')}/>
-          </Form.Group>
-         
-          <Form.Group className="mb-3" controlId="salario">
-           <Form.Label>Salario: </Form.Label>
-           <Form.Control type="text" {...register('salario')}/>
           </Form.Group>
          
           <Form.Group className="mb-3" controlId="email">

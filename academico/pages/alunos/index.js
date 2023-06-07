@@ -8,29 +8,29 @@ import { BsFillPencilFill } from 'react-icons/bs'
 
 const index = () => {
   
-  const [professores, setProfessores] = useState([])
+  const [alunos, setAlunos] = useState([])
 
   useEffect(()=>{
     getAll()
   }, [])
 
   function getAll(){
-    axios.get('/api/professores').then(resultado=>{
-      setProfessores(resultado.data)
+    axios.get('/api/alunos').then(resultado=>{
+      setAlunos(resultado.data)
   })
 }
 
   function excluir (id){
     if(confirm('Deseja realmente excluir o registro?')){
-       axios.delete('/api/professores/' + id)
+       axios.delete('/api/alunos/' + id)
        getAll()
     }
 }
 
   return (
-    <Pagina titulo="Professores">
+    <Pagina titulo="Alunos">
 
-      <Link href={'/professores/form'} className="btn btn-primary mb-2">Novo</Link>
+      <Link href={'/alunos/form'} className="btn btn-primary mb-2">Novo</Link>
 
       <Table striped bordered hover>
             
@@ -52,18 +52,17 @@ const index = () => {
             </thead>
             
             <tbody>
-             {professores.map( (item, i) => (
+             {alunos.map( (item, i) => (
               <tr key={i}>
                 <td>
-                  <Link href={'/professores/' + i}>
+                  <Link href={'/alunos/' + i}>
                   <BsFillPencilFill className='me-2 text-primary'/>
                   </Link>
                   <AiOutlineDelete onClick={() => excluir(i)} className='text-danger' />
                 </td>
                 <td>{item.nome}</td>
                 <td>{item.cpf}</td>
-                <td>{item.matricula}</td>
-                <td>{item.salario}</td>
+                <td>{item.matricula}</td>               
                 <td>{item.email}</td>
                 <td>{item.telefone}</td>
                 <td>{item.cep}</td>

@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
@@ -10,23 +11,28 @@ const index = () => {
   const [cursos, setCursos] = useState([])
 
   useEffect(()=>{
-    setCursos(getAll())
+    //setCursos(getAll()) --localStorage--
+    getAll()
   }, [])
 
   function getAll() {
-    return JSON.parse(window.localStorage.getItem('cursos')) || []
-
-  }
+    //return JSON.parse(window.localStorage.getItem('cursos')) || [] --localStorage-- 
+    axios.get('/api/cursos').then(resultado=>{
+      setCursos(resultado.data)
+  })
+}
 
   function excluir(id) {
-    if (confirm('Deseja realmente excluir o registro')){
-    const cursos = getAll()
-    cursos.splice(id, 1)
-    window.localStorage.setItem('cursos', JSON.stringify(cursos))
-    setCursos(cursos)
-  }
-
+    //if (confirm('Deseja realmente excluir o registro')){
+    //const cursos = getAll()                                   
+    //cursos.splice(id, 1)                                          --localStorage--     
+    //window.localStorage.setItem('cursos', JSON.stringify(cursos))
+    //setCursos(cursos)
   
+    if(confirm('Deseja realmente excluir o registro?')){
+      axios.delete('/api/cursos/' + id)
+      getAll()
+   }
 }
 
   return (

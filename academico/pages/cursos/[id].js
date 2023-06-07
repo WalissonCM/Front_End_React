@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
@@ -15,24 +16,30 @@ const form = () => {
   useEffect(() => {
   
   if (query.id) {
-    const cursos = JSON.parse(window.localStorage.getItem('cursos'))
-    const curso =  cursos[query.id]
+    //const cursos = JSON.parse(window.localStorage.getItem('cursos'))  --localStorage--
+    //const curso =  cursos[query.id]                                 
     
+    axios.get('/api/cursos/' + query.id).then(resultado=>{
+      const curso = resultado.data
+
     for(let atributo in curso){
       setValue(atributo, curso[atributo])
-    }
-    //setValue('nome', curso.nome)
+     //setValue('nome', curso.nome)
     //setValue('duracao', curso.duracao)
     //setValue('modalidade', curso.modalidade)
-  }
-
+    }
+  })
+}
   }, [query.id])
 
   function salvar (dados) {
-    const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
-    cursos.splice(query.id, 1, dados)
-    window.localStorage.setItem('cursos', JSON.stringify(cursos))
-    push('/cursos')
+    //const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
+    //cursos.splice(query.id, 1, dados)
+    //window.localStorage.setItem('cursos', JSON.stringify(cursos))       --localStorage--
+    //push('/cursos')
+
+    axios.put('/api/cursos/' + dados.id, dados)
+    push('/cursos') 
   }
   
   return (

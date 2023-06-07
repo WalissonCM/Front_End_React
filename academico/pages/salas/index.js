@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
@@ -7,56 +8,54 @@ import { BsFillPencilFill } from 'react-icons/bs'
 
 const index = () => {
   
-  const [cursos, setCursos] = useState([])
+  const [salas, setSalas] = useState([])
 
   useEffect(()=>{
-    setCursos(getAll())
+    getAll()
   }, [])
 
-  function getAll() {
-    return JSON.parse(window.localStorage.getItem('cursos')) || []
-
-  }
-
-  function excluir(id) {
-    if (confirm('Deseja realmente excluir o registro')){
-    const cursos = getAll()
-    cursos.splice(id, 1)
-    window.localStorage.setItem('cursos', JSON.stringify(cursos))
-    setCursos(cursos)
-  }
-
-  
+  function getAll(){
+    axios.get('/api/salas').then(resultado=>{
+      setSalas(resultado.data)
+  })
 }
 
-  return (
-    <Pagina titulo="Cursos">
+  function excluir (id){
+    if(confirm('Deseja realmente excluir o registro?')){
+       axios.delete('/api/salas/' + id)
+       getAll()
+    }
+}
 
-      <Link href={'/cursos/form'} className="btn btn-primary mb-2">Novo</Link>
+
+  return (
+    <Pagina titulo="Salas">
+
+      <Link href={'/salas/form'} className="btn btn-primary mb-2">Novo</Link>
 
       <Table striped bordered hover>
             
-            <thead>   
+            <thead>  
             <tr>
               <th></th>
               <th>Nome</th>
-              <th>Duração</th>
-              <th>Modalidade</th>
-            </tr>     
+              <th>Capacidade</th>
+              <th>Tipo</th>             
+            </tr>
             </thead>
             
             <tbody>
-             {cursos.map( (item, i) => (
-              <tr key={i}>
+             {salas.map((item) => (
+              <tr key={item.id}>
                 <td>
-                  <Link href={'/cursos/' + i}>
+                  <Link href={'/salas/' + item.id}>
                   <BsFillPencilFill className='me-2 text-primary'/>
                   </Link>
-                  <AiOutlineDelete onClick={() => excluir(i)} className='text-danger' />
+                  <AiOutlineDelete onClick={() => excluir(item.id)} className='text-danger' />
                 </td>
                 <td>{item.nome}</td>
-                <td>{item.duracao}</td>
-                <td>{item.modalidade}</td>
+                <td>{item.capacidade}</td>
+                <td>{item.tipo}</td>
                 </tr>
              ))}     
             </tbody>

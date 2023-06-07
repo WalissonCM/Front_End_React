@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -13,10 +14,13 @@ const form = () => {
   const {register, handleSubmit, formState:{errors}} = useForm()
 
   function salvar (dados) {
-    const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
-    cursos.push(dados)
-    window.localStorage.setItem('cursos', JSON.stringify(cursos))
-    push('/cursos')
+    //const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
+    //cursos.push(dados)                                                     --localStorage--
+    //window.localStorage.setItem('cursos', JSON.stringify(cursos))
+    //push('/cursos')
+    
+    axios.post('/api/cursos', dados)
+    push('/cursos') 
   }
   
   const validatorNome = {
@@ -34,8 +38,8 @@ const form = () => {
   const validatorDuração = {
     required:'*Campo obrigatório',
     maxLength: {
-      value: 2,
-      message: 'Máximo 2 Caracteres'
+      value: 3,
+      message: 'Máximo 3 Caracteres'
     }
   }
 
@@ -60,7 +64,7 @@ const form = () => {
               errors.nome &&
               <small className='text-danger'>{errors.nome.message}</small>
             }
-          </Form.Group>
+         </Form.Group>
          
          <Form.Group className="mb-3" controlId="duracao">
            <Form.Label>Duração: </Form.Label>
@@ -69,7 +73,7 @@ const form = () => {
               errors.duracao &&
               <small className='text-danger'>{errors.duracao.message}</small>
             }
-           </Form.Group>
+         </Form.Group>
          <Form.Group className="mb-3" controlId="modalidade">
            <Form.Label>Modalidade: </Form.Label>
            <Form.Control type="text" {...register('modalidade', validatorModalidade)}/>

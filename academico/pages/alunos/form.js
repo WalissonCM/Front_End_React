@@ -14,12 +14,12 @@ const form = () => {
   const {register, handleSubmit, formState:{errors}} = useForm()
 
   function salvar (dados) {
-    axios.post('/api/professores', dados)
-    push('/professores')
+    axios.post('/api/alunos', dados)
+    push('/alunos')
   }
   
  return (
-    <Pagina titulo="Professores">
+    <Pagina titulo="Alunos">
 
       <Form>
          
@@ -47,15 +47,6 @@ const form = () => {
             {
               errors.matricula &&
               <small className='text-danger'>{errors.matricula.message}</small>
-            }
-          </Form.Group>
-         
-          <Form.Group className="mb-3" controlId="salario">
-           <Form.Label>Salario: </Form.Label>
-           <Form.Control type="text" {...register('salario', {require:'*Campo Obrigatório'})}/>
-            {
-              errors.salario &&
-              <small className='text-danger'>{errors.salario.message}</small>
             }
           </Form.Group>
          
@@ -124,7 +115,7 @@ const form = () => {
          
          <div className='text-center'>
          <Button variant="success" onClick={handleSubmit(salvar)}><AiOutlineCheck className='me-1'/> Salvar</Button>
-         <Link href={'/professores'} className="ms-2 btn btn-danger"><IoMdArrowRoundBack className='me-1'/>Voltar</Link>
+         <Link href={'/alunos'} className="ms-2 btn btn-danger"><IoMdArrowRoundBack className='me-1'/>Voltar</Link>
          </div>
       
       </Form>
