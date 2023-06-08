@@ -52,13 +52,13 @@ const index = () => {
             </thead>
             
             <tbody>
-             {cursos.map( (item, i) => (
-              <tr key={i}>
+             {cursos.map( (item) => (
+              <tr key={item.id}>
                 <td>
-                  <Link href={'/cursos/' + i}>
+                  <Link href={'/cursos/' + item.id}>
                   <BsFillPencilFill className='me-2 text-primary'/>
                   </Link>
-                  <AiOutlineDelete onClick={() => excluir(i)} className='text-danger' />
+                  <AiOutlineDelete onClick={() => excluir(item.id)} className='text-danger' type='submit' />
                 </td>
                 <td>{item.nome}</td>
                 <td>{item.duracao}</td>

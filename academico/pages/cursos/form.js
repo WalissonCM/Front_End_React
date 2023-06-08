@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import cursoValidator from '@/validators/cursoValidator'
 import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -23,35 +24,6 @@ const form = () => {
     push('/cursos') 
   }
   
-  const validatorNome = {
-    required:'*Campo obrigatório',
-    minLength: {
-      value: 3,
-      message: 'Mínimo 3 Caracteres'
-    },
-    maxLength: {
-      value: 10,
-      message: 'Máximo 10 Caracteres'
-    }
-  }
-
-  const validatorDuração = {
-    required:'*Campo obrigatório',
-    maxLength: {
-      value: 3,
-      message: 'Máximo 3 Caracteres'
-    }
-  }
-
-  const validatorModalidade = {
-    required:'*Campo obrigatório',
-    maxLength: {
-      value: 10,
-      message: 'Máximo 10 Caracteres'
-    }
-  }
-
-
   return (
     <Pagina titulo="Cursos">
 
@@ -59,7 +31,7 @@ const form = () => {
          
          <Form.Group className="mb-3" controlId="nome">
            <Form.Label>Nome: </Form.Label>
-           <Form.Control type="text" {...register('nome', validatorNome)}/>
+           <Form.Control isInvalid={errors.nome} type="text" {...register('nome', cursoValidator.nome)}/>
             {
               errors.nome &&
               <small className='text-danger'>{errors.nome.message}</small>
@@ -68,7 +40,7 @@ const form = () => {
          
          <Form.Group className="mb-3" controlId="duracao">
            <Form.Label>Duração: </Form.Label>
-           <Form.Control type="text" {...register('duracao', validatorDuração)}/>
+           <Form.Control isInvalid={errors.duracao} type="text" {...register('duracao', cursoValidator.duração)}/>
             {
               errors.duracao &&
               <small className='text-danger'>{errors.duracao.message}</small>
@@ -76,7 +48,7 @@ const form = () => {
          </Form.Group>
          <Form.Group className="mb-3" controlId="modalidade">
            <Form.Label>Modalidade: </Form.Label>
-           <Form.Control type="text" {...register('modalidade', validatorModalidade)}/>
+           <Form.Control isInvalid={errors.modalidade} type="text" {...register('modalidade', cursoValidator.modalidade)}/>
             {
               errors.modalidade &&
               <small className='text-danger'>{errors.modalidade.message}</small>
