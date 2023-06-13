@@ -6,7 +6,7 @@ const cursoValidator = {
             message: 'A quantidade de caracteres mínima é 3'
         },
         maxLength: {
-            value: 40,
+            value: 10,
             message: 'A quantidade de caracteres máxima é 10'
         }
     },
