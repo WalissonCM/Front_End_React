@@ -40,7 +40,6 @@ const index = () => {
               <th>Nome</th>
               <th>Cpf</th>
               <th>Matricula</th>
-              <th>Salário</th>
               <th>Email</th>
               <th>Telefone</th>
               <th>Cep</th>

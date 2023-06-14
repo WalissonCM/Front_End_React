@@ -27,9 +27,13 @@ const cursoValidator = {
     },
     modalidade: {
         required: 'O campo é obrigatório',
+        minLength: {
+            value: 1,
+            message: 'A quantidade de caracteres mínima é 1'
+        },
         maxLength: {
-            value: 20,
-            message: 'A quantidade de caracteres máxima é 20'
+            value: 10,
+            message: 'A quantidade de caracteres máxima é 10'
         },
     }
 }

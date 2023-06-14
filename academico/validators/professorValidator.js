@@ -1,4 +1,4 @@
-const alunoValidator = {
+const professorValidator = {
     nome: {
         required: 'O campo é obrigatório',
         minLength: {
@@ -22,6 +22,13 @@ const alunoValidator = {
         maxLength: {
             value: 10,
             message: 'A quantidade de caracteres máxima é 10'
+        }
+    },
+    salario: {
+        required: 'O campo é obrigatório',
+        maxLength: {
+            value: 11,
+            message: 'A quantidade de caracteres máxima é 11'
         }
     },
     email: {
@@ -85,4 +92,4 @@ const alunoValidator = {
 
 }
 
-export default alunoValidator
+export default professorValidator

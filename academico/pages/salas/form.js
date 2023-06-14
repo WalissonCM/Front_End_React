@@ -25,7 +25,7 @@ const form = () => {
         
          <Form.Group className="mb-3" controlId="nome">
            <Form.Label>Nome: </Form.Label>
-           <Form.Control type="text" {...register('nome', {require:'*Campo Obrigatório'})}/>
+           <Form.Control type="text" {...register('nome', salaValidator.nome)}/>
            {
               errors.nome &&
               <small className='text-danger'>{errors.nome.message}</small>
@@ -34,7 +34,7 @@ const form = () => {
 
          <Form.Group className="mb-3" controlId="capacidade">
            <Form.Label>Capacidade: </Form.Label>
-           <Form.Control type="text" {...register('capacidade', {require:'*Campo Obrigatório'})}/>
+           <Form.Control type="text" {...register('capacidade', salaValidator.capacidade)}/>
            {
               errors.capacidade &&
               <small className='text-danger'>{errors.capacidade.message}</small>
@@ -43,7 +43,7 @@ const form = () => {
 
           <Form.Group className="mb-3" controlId="tipo">
            <Form.Label>Tipo: </Form.Label>
-           <Form.Control type="text" {...register('tipo', {require:'*Campo Obrigatório'})}/>
+           <Form.Control type="text" {...register('tipo', salaValidator.tipo)}/>
            {
               errors.tipo &&
               <small className='text-danger'>{errors.tipo.message}</small>

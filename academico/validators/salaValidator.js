@@ -1,4 +1,4 @@
-const cursoValidator = {
+const salaValidator = {
     nome: {
         required: 'O campo é obrigatório',
         minLength: {
@@ -10,28 +10,28 @@ const cursoValidator = {
             message: 'A quantidade de caracteres máxima é 10'
         }
     },
-    duracao: {
+    capacidade: {
         required: 'O campo é obrigatório',
         maxLength: {
             value: 2,
             message: 'A quantidade de caracteres máxima é 2'
         },
         min: {
-            value: 5,
-            message: 'O valor mínimo é 5'
+            value: 30,
+            message: 'O valor mínimo é 30'
         },
         max: {
-            value: 12,
-            message: 'O valor máximo é 12'
+            value: 60,
+            message: 'O valor máximo é 60'
         }
     },
-    modalidade: {
+    tipo: {
         required: 'O campo é obrigatório',
         maxLength: {
-            value: 20,
-            message: 'A quantidade de caracteres máxima é 20'
+            value: 10,
+            message: 'A quantidade de caracteres máxima é 10'
         },
     }
 }
 
-export default cursoValidator
+export default salaValidator

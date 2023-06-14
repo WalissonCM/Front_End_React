@@ -6,14 +6,14 @@ const disciplinaValidator = {
             message: 'A quantidade de caracteres mínima é 3'
         },
         maxLength: {
-            value: 25,
-            message: 'A quantidade de caracteres máxima é 25'
+            value: 20,
+            message: 'A quantidade de caracteres máxima é 20'
         }
     },
     curso: {
         required: 'O campo é obrigatório',
         maxLength: {
-            value: 25,
+            value: 20,
             message: 'A quantidade de caracteres máxima é 2'
         },
         minLength: {
