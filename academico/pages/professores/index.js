@@ -39,7 +39,6 @@ const index = () => {
               <th></th>
               <th>Nome</th>
               <th>Cpf</th>
-              <th>Matricula</th>
               <th>Salário</th>
               <th>Email</th>
               <th>Telefone</th>
@@ -62,7 +61,6 @@ const index = () => {
                 </td>
                 <td>{item.nome}</td>
                 <td>{item.cpf}</td>
-                <td>{item.matricula}</td>
                 <td>{item.salario}</td>
                 <td>{item.email}</td>
                 <td>{item.telefone}</td>

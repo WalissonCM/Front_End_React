@@ -46,11 +46,6 @@ const form = () => {
            <Form.Control type="text" {...register('cpf')}/>
           </Form.Group>
          
-          <Form.Group className="mb-3" controlId="matricula">
-           <Form.Label>Matricula: </Form.Label>
-           <Form.Control type="text" {...register('matricula')}/>
-          </Form.Group>
-         
           <Form.Group className="mb-3" controlId="salario">
            <Form.Label>Salario: </Form.Label>
            <Form.Control type="text" {...register('salario')}/>

@@ -17,13 +17,6 @@ const professorValidator = {
             message: 'A quantidade de caracteres máxima é 14'
         }
     },
-    matricula: {
-        required: 'O campo é obrigatório',
-        maxLength: {
-            value: 10,
-            message: 'A quantidade de caracteres máxima é 10'
-        }
-    },
     salario: {
         required: 'O campo é obrigatório',
         maxLength: {

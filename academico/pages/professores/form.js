@@ -50,18 +50,9 @@ const form = () => {
             }
           </Form.Group>
          
-          <Form.Group className="mb-3" controlId="matricula">
-           <Form.Label>Matricula: </Form.Label>
-           <Form.Control type="text" {...register('matricula', professorValidator.matricula)}/>
-            {
-              errors.matricula &&
-              <small className='text-danger'>{errors.matricula.message}</small>
-            }
-          </Form.Group>
-         
           <Form.Group className="mb-3" controlId="salario">
            <Form.Label>Salario: </Form.Label>
-           <Form.Control type="text" mask= "R$ 99.999,00" {...register('salario', professorValidator.salario)} onChange={handleChange}/>
+           <Form.Control type="text" mask= "R$ 99999" {...register('salario', professorValidator.salario)} onChange={handleChange}/>
             {
               errors.salario &&
               <small className='text-danger'>{errors.salario.message}</small>
